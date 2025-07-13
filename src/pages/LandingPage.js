@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaShieldAlt, FaUsers, FaRocket } from 'react-icons/fa';
+import { projects as allProjects } from './InvestmentProjects';
 
 const LandingContainer = styled.div`
   min-height: 100vh;
@@ -341,35 +342,7 @@ const LandingPage = () => {
     }
   ];
 
-  const investments = [
-    {
-      id: 1,
-      title: 'مشروع العقارات الفاخرة',
-      subscription: '85%',
-      status: 'مفتوح للاستثمار',
-      progress: 75,
-      target: `${(2000000 * 140).toLocaleString()} ريال يمني`,
-      raised: `${(1500000 * 140).toLocaleString()} ريال يمني`
-    },
-    {
-      id: 2,
-      title: 'شركة المنذر بي سي للتكنولوجيا',
-      subscription: '92%',
-      status: 'قريب من الاكتمال',
-      progress: 92,
-      target: `${(500000 * 140).toLocaleString()} ريال يمني`,
-      raised: `${(460000 * 140).toLocaleString()} ريال يمني`
-    },
-    {
-      id: 3,
-      title: 'مشروع الطاقة المتجددة',
-      subscription: '67%',
-      status: 'مفتوح للاستثمار',
-      progress: 67,
-      target: `${(1500000 * 140).toLocaleString()} ريال يمني`,
-      raised: `${(1005000 * 140).toLocaleString()} ريال يمني`
-    }
-  ];
+  const investments = allProjects.slice(0, 6);
 
   const stats = [
     { number: '50+', label: 'مشروع ناجح' },
