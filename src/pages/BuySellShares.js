@@ -548,33 +548,6 @@ const BuySellShares = () => {
             </ActionButtons>
           </Form>
         </MainCard>
-
-        {showConfirmation && (
-          <ConfirmationModal
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <ModalContent>
-              <div className="modal-icon">
-                <FaCheckCircle />
-              </div>
-              <h3>تأكيد العملية</h3>
-              <p>
-                هل أنت متأكد من {activeTab === 'buy' ? 'شراء' : 'بيع'} {quantity} سهم 
-                بقيمة {(totalAmount * 1.01).toLocaleString()} ريال؟
-              </p>
-              <div className="modal-buttons">
-                <button className="cancel" onClick={() => setShowConfirmation(false)}>
-                  إلغاء
-                </button>
-                <button className="confirm" onClick={confirmAction}>
-                  تأكيد
-                </button>
-              </div>
-            </ModalContent>
-          </ConfirmationModal>
-        )}
       </BuySellContent>
     </BuySellContainer>
   );
