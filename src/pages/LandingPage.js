@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaShieldAlt, FaUsers, FaRocket } from 'react-icons/fa';
-import { projects as allProjects } from './InvestmentProjects';
+import { featuredProjects } from '../data/projectsData';
 
 const LandingContainer = styled.div`
   min-height: 100vh;
@@ -342,7 +342,7 @@ const LandingPage = () => {
     }
   ];
 
-  const investments = allProjects.slice(0, 6);
+  const investments = featuredProjects;
 
   const stats = [
     { number: '50+', label: 'مشروع ناجح' },
