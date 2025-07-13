@@ -365,7 +365,6 @@ const BuySellShares = () => {
   const [activeTab, setActiveTab] = useState('buy');
   const [quantity, setQuantity] = useState(1);
   const [customAmount, setCustomAmount] = useState('');
-  const [showConfirmation, setShowConfirmation] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [project, setProject] = useState(null);
   const [sharePrice, setSharePrice] = useState(1000);
@@ -403,42 +402,21 @@ const BuySellShares = () => {
     }
   };
 
+  // تم التعديل هنا: إشعار فوري عند الشراء أو البيع
   const handleAction = (action) => {
     if (action === 'sell' && quantity > project?.ownedShares) {
       toast.error('لا تملك أسهم كافية للبيع');
       return;
     }
-    
     if (action === 'buy' && quantity > project?.availableShares) {
       toast.error('الأسهم المتاحة غير كافية');
       return;
     }
-    
-    setShowConfirmation(true);
-  };
-
-  const confirmAction = async () => {
-    setIsLoading(true);
-    setShowConfirmation(false);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const actionText = activeTab === 'buy' ? 'شراء' : 'بيع';
-      toast.success(`تم ${actionText} الأسهم بنجاح!`);
-      
-      // Reset form
-      setQuantity(1);
-      setCustomAmount(sharePrice.toString());
-      
-      // Navigate back to project details
-      navigate(`/project/${projectId}`);
-    } catch (error) {
-      toast.error('حدث خطأ أثناء تنفيذ العملية');
-    } finally {
-      setIsLoading(false);
-    }
+    const actionText = action === 'buy' ? 'تم الشراء بنجاح!' : 'تم البيع بنجاح!';
+    toast.success(actionText);
+    // إعادة تعيين النموذج
+    setQuantity(1);
+    setCustomAmount(sharePrice.toString());
   };
 
   if (!project) {
